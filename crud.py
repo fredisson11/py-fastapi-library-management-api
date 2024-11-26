@@ -12,11 +12,14 @@ def create_author(db: Session, author: AuthorCreate) -> Author:
     db.refresh(db_author)
     return db_author
 
+
 def get_authors(db: Session, skip: int = 0, limit: int = 10) -> list[Type[Author]]:
     return db.query(Author).offset(skip).limit(limit).all()
 
+
 def get_author_by_id(db: Session, author_id: int) -> Author | None:
     return db.query(Author).filter(Author.id == author_id).first()
+
 
 def create_book(db: Session, book: BookCreate, author_id: int) -> Book:
     db_book = Book(
@@ -33,6 +36,7 @@ def create_book(db: Session, book: BookCreate, author_id: int) -> Book:
 
 def get_books(db: Session, skip: int = 0, limit: int = 10) -> list[Type[Book]]:
     return db.query(Book).offset(skip).limit(limit).all()
+
 
 def get_books_by_author(db: Session, author_id: int) -> list[Type[Book]]:
     return db.query(Book).filter(Book.author_id == author_id).all()
