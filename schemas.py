@@ -1,8 +1,5 @@
-from dataclasses import field
 from datetime import date
 from pydantic import BaseModel
-
-from models import Book
 
 
 class AuthorBase(BaseModel):
@@ -16,7 +13,6 @@ class AuthorCreate(AuthorBase):
 
 class Author(AuthorBase):
     id: int
-
     class Config:
         from_attributes = True
 
@@ -34,6 +30,5 @@ class BookCreate(BookBase):
 
 class Book(BookBase):
     id: int
-
     class Config:
         from_attributes = True

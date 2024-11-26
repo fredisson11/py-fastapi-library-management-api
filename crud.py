@@ -1,8 +1,8 @@
+from sqlalchemy.orm import Session
 from typing import Type
 
 from models import Author, Book
 from schemas import AuthorCreate, BookCreate
-from sqlalchemy.orm import Session
 
 
 def create_author(db: Session, author: AuthorCreate) -> Author:
